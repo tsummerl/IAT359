@@ -1,4 +1,4 @@
-package summerland.twilight.myapplication;
+package summerland.twilight.lab3;
 
 import org.junit.Test;
 

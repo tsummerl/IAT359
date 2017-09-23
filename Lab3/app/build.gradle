@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.example.helmine.myfirstapp"
+        applicationId "summerland.twilight.lab3"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1

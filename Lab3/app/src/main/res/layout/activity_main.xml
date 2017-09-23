@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="summerland.twilight.lab3.MainActivity">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="7"
+        android:padding="20dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TableRow
+            android:layout_marginBottom="10dp"
+            android:background="#ECB35E">
+
+            <TextView
+                android:id="@+id/assignTextView"
+                android:padding="10dp"
+                android:text="Assignments (15%)"
+                android:textColor="#ffff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/assignmentEdit"
+                android:backgroundTint="#ffff"
+                android:ems="8" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginBottom="10dp"
+            android:background="#ECB35E">
+
+            <TextView
+                android:id="@+id/participationTextView"
+                android:padding="10dp"
+                android:text="Participation (15%)"
+                android:textColor="#ffff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/participationEdit"
+                android:backgroundTint="#ffff"
+                android:ems="8" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginBottom="10dp"
+            android:background="#ECB35E">
+
+            <TextView
+                android:id="@+id/projectTextView"
+                android:padding="10dp"
+                android:text="Projects (20%)"
+                android:textColor="#ffff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/projectEdit"
+                android:backgroundTint="#ffff"
+                android:ems="8" />
+        </TableRow>
+
+        <TableRow
+            android:layout_marginBottom="10dp"
+            android:background="#ECB35E">
+
+            <TextView
+                android:id="@+id/quizzesTextView"
+                android:padding="10dp"
+                android:text="Quizes (20%)"
+                android:textColor="#ffff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/quizzesEdit"
+                android:backgroundTint="#ffff"
+                android:ems="8" />
+        </TableRow>
+
+        <TableRow android:background="#ECB35E">
+
+            <TextView
+                android:id="@+id/examTextView"
+                android:padding="10dp"
+                android:text="Exam (30%)"
+                android:textColor="#ffff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/examEdit"
+                android:backgroundTint="#ffff"
+                android:ems="8" />
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ECB35E">
+
+            <TextView
+                android:id="@+id/Textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Set Exam"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingTop="10dp" />
+        </LinearLayout>
+
+        <TableRow
+            android:layout_marginBottom="10dp"
+            android:background="#E96C61">
+
+            <TextView
+                android:id="@+id/assignTextView6"
+                android:padding="10dp"
+                android:text="Final Mark"
+                android:textColor="#ffff"
+                android:textSize="25sp" />
+
+            <TextView android:id="@+id/finalEditText" />
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset All" />
+
+        </LinearLayout>
+    </TableLayout>
+
+
+</LinearLayout>
