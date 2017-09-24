@@ -105,7 +105,7 @@
             android:background="#ECB35E">
 
             <TextView
-                android:id="@+id/Textview"
+                android:id="@+id/SetExamSeekTextview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -114,7 +114,7 @@
                 android:textSize="16sp" />
 
             <SeekBar
-                android:id="@+id/seekBar"
+                android:id="@+id/examSeekBar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -126,13 +126,13 @@
             android:background="#E96C61">
 
             <TextView
-                android:id="@+id/assignTextView6"
+                android:id="@+id/finalTitleTextView"
                 android:padding="10dp"
                 android:text="Final Mark"
                 android:textColor="#ffff"
                 android:textSize="25sp" />
 
-            <TextView android:id="@+id/finalEditText" />
+            <TextView android:id="@+id/finalTextView" />
         </TableRow>
 
         <LinearLayout
@@ -144,6 +144,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/resetButton"
                 android:text="Reset All" />
 
         </LinearLayout>
