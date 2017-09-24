@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
 
     private Button resetButton;
     @Override
+    /*
+        onCreate Method call when Activity is created
+        @param savedInstanceState saved bundle information
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -59,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         examEditText.addTextChangedListener(this);
 
         examSeek.setOnSeekBarChangeListener(examSeekBarListener);
-//        resetButton.setOnClickListener(this);
+        examSeek.setProgress(80);
+        resetButton.setOnClickListener(this);
     }
 
     private void updateStandard()
@@ -159,6 +164,12 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     @Override
     public void onClick(View v)
     {
+        assgnEditText.setText("");
+        projectEditText.setText("");
+        quizzesEditText.setText("");
+        examEditText.setText("");
+        examSeek.setProgress(80);
+        partEditText.setText("");
 
     }
 
