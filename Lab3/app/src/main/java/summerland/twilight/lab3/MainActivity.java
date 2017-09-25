@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements TextWatcher, View.OnClickListener {
 
-    private static final String DEBUG_TAG = "CourseGrades";
     private static final String ASSIGNMENTS = "ASSIGNMENTS";
     private static final String PARTICIPATE = "PARTICIPATION";
     private static final String PROJECT = "PROJECT";
@@ -67,6 +66,9 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         resetButton.setOnClickListener(this);
     }
 
+    /*
+        Used to update the final mark based off the marks for the grades
+     */
     private void updateStandard()
     {
         double finalMark = assgn*15/100 + participation*15/100 + project*20/100 + quizzes*20/100 + exam*30/100;
@@ -78,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         examEditText.setText(String.format("%d", (int)exam));
     }
 
+    /*
+        Saves the state of the current entered marks
+        @param outState the Bundle to save key value information in
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState)
     {
@@ -88,7 +94,11 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         outState.putDouble(PARTICIPATE, participation);
         outState.putDouble(EXAM, exam);
     }
-
+    /*
+        Restores the information from the input
+        @param inState  the Bundle with the key value information saved from
+        @OnSaveInstanceState
+     */
     @Override
     protected void onRestoreInstanceState(Bundle inState)
     {
@@ -98,7 +108,11 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
         quizzes = inState.getDouble(QUIZZES);
         participation = inState.getDouble(PARTICIPATE);
         exam = inState.getDouble(EXAM);
+        updateStandard();
     }
+    /*
+        Saves information when user updates the UI
+     */
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count)
     {
@@ -152,28 +166,41 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after)
     {
-
+        ; //Do nothing
     }
 
     @Override
     public void afterTextChanged(Editable s)
     {
-
+        ; //Do nothing
     }
 
+    /*
+        Restores the default value when the reset button is pressed
+     */
     @Override
     public void onClick(View v)
     {
+        participation = 0.0;
+        assgn = 0.0;
+        project = 0.0;
+        quizzes = 0.0;
         assgnEditText.setText("");
         projectEditText.setText("");
         quizzesEditText.setText("");
-        examEditText.setText("");
+        examEditText.setText("80");
         examSeek.setProgress(80);
         partEditText.setText("");
 
     }
 
+    /*
+        SeekBar class for updating the exam mark
+     */
     private SeekBar.OnSeekBarChangeListener examSeekBarListener = new SeekBar.OnSeekBarChangeListener() {
+        /*
+            updates the exam mark based on the seekBar
+         */
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b)
         {
@@ -184,12 +211,12 @@ public class MainActivity extends AppCompatActivity implements TextWatcher, View
 
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) {
-
+            ; //Do nothing
         }
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-
+            ; //Do nothing
         }
     };
 }
