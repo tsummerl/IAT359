@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context="summerland.twilight.lab4.WordEntry">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter a Word:"
+
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editWordEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/butDict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Look Up in Dictionary"
+        android:layout_marginTop="40dp"
+        />
+
+</LinearLayout>
