@@ -29,28 +29,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
         editPass = (EditText) findViewById(R.id.editTextPassword);
         editUser = (EditText) findViewById(R.id.editTextUsername);
         submitButton.setOnClickListener(this);
-        Toast.makeText(this, "Started " + submitButton.getText().toString(), Toast.LENGTH_LONG).show();
         if(!username.equals(DEFAULT) && !password.equals(DEFAULT))
         {
-            Intent intent = new Intent(this, LoginUser.class);
+            Intent intent = new Intent(this, LoginUserActivity.class);
+            finish();
             startActivity(intent);
         }
     }
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(this, "Click", Toast.LENGTH_LONG).show();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String tempPass = editPass.getText().toString();
         String tempUser = editUser.getText().toString();
-//        if(checkCredentials(tempPass, tempUser))
-//        {
-//            editor.putString("USERNAME", tempUser);
-//            editor.putString("PASSWORD", tempPass);
-//            editor.commit();
-//            Intent intent = new Intent(this, Login.class);
-//            startActivity(intent);
-//        }
+        if(checkCredentials(tempPass, tempUser))
+        {
+            editor.putString("USERNAME", tempUser);
+            editor.putString("PASSWORD", tempPass);
+            editor.commit();
+            Intent intent = new Intent(this, LoginUserActivity.class);
+            finish();
+            startActivity(intent);
+        }
 
         //change activity
     }

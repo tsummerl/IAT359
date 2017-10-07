@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Settings extends AppCompatActivity implements View.OnClickListener{
@@ -36,8 +37,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
         sharedPreferences = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
 
         int size = sharedPreferences.getInt("SIZE", 20);
-        int txtColor = sharedPreferences.getInt("TEXTCOLOR", 0);
-        int bgColour = sharedPreferences.getInt("BGCOLOR", 0);
+        int txtColor = sharedPreferences.getInt("TEXTCOLOR", Color.BLACK);
+        int bgColour = sharedPreferences.getInt("BGCOLOR", Color.WHITE);
         String username = sharedPreferences.getString("USERNAME", DEFAULT);
 
         welcomeTxt.setText("Welcome back " + username);
@@ -45,24 +46,29 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
         welcomeTxt.setTextColor(txtColor);
 
         getWindow().getDecorView().setBackgroundColor(bgColour);
+        saveButton.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
-        int size = Integer.valueOf(textSize.getText().toString());
-        int txtColor = Color.parseColor(textColour.getText().toString());
-        int bgColour = Color.parseColor(bgColor.getText().toString());
+        try{
+            int size = Integer.valueOf(textSize.getText().toString());
+            int txtColor = Color.parseColor(textColour.getText().toString());
+            int bgColour = Color.parseColor(bgColor.getText().toString());
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("SIZE",size);
+            editor.putInt("TEXTCOLOR", txtColor);
+            editor.putInt("BGCOLOR", bgColour);
+            editor.commit();
+            welcomeTxt.setTextSize(size);
+            welcomeTxt.setTextColor(txtColor);
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("SIZE",size);
-        editor.putInt("TEXTCOLOR", txtColor);
-        editor.putInt("BGCOLOR", bgColour);
-
-        welcomeTxt.setTextSize(size);
-        welcomeTxt.setTextColor(txtColor);
-
-        getWindow().getDecorView().setBackgroundColor(bgColour);
-
+            getWindow().getDecorView().setBackgroundColor(bgColour);
+        }
+        catch (IllegalArgumentException e)
+        {
+            Toast.makeText(this, "Please enter a valid color format or font size", Toast.LENGTH_LONG).show();
+        }
     }
 }

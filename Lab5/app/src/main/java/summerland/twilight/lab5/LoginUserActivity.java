@@ -21,21 +21,21 @@ public class LoginUserActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_user);
         sharedPreferences = getSharedPreferences("Mydata", Context.MODE_PRIVATE);
 
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        editPass = findViewById(R.id.editTextPassword);
-        editUser = findViewById(R.id.editTextUsername);
-//        buttonLogin.setOnClickListener(this);
-//        buttonRegister.setOnClickListener(this);
+        editPass = (EditText) findViewById(R.id.editTextPassword);
+        editUser = (EditText) findViewById(R.id.editTextUsername);
+        buttonLogin.setOnClickListener(this);
+        buttonRegister.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view)
     {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         switch (view.getId())
         {
             case R.id.buttonLogin:
@@ -49,8 +49,20 @@ public class LoginUserActivity extends AppCompatActivity implements View.OnClick
                     Intent i = new Intent(this, Settings.class);
                     startActivity(i);
                 }
+                else
+                {
+                    editor.putString("USERNAME", DEFAULT);
+                    editor.putString("PASSWORD", DEFAULT);
+                    editor.commit();
+                    Toast.makeText(this, "Register as a new user", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(this, MainActivity.class);
+                    startActivity(i);
+                }
                 break;
             case R.id.buttonRegister:
+                editor.putString("USERNAME", DEFAULT);
+                editor.putString("PASSWORD", DEFAULT);
+                editor.commit();
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
                 break;
