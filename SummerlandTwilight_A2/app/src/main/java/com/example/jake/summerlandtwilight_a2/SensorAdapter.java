@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.hardware.Sensor;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,9 +29,8 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
     }
 
     @Override
-    public SensorAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
-        View v = LayoutInflater.from(parent.getContext()).inflate(sensor_layout,parent,false);
+    public SensorAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(sensor_layout, parent, false);
         MyViewHolder viewHolder = new MyViewHolder(v);
         return viewHolder;
     }
@@ -38,11 +38,13 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
     @Override
     public void onBindViewHolder(SensorAdapter.MyViewHolder holder, int position) {
         holder.sensorNameEntry.setText(list.get(position).getName());
+        holder.sensorType = list.get(position).getType();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView sensorNameEntry;
+        public int sensorType;
         public LinearLayout myLayout;
 
         Context context;
@@ -54,12 +56,11 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
 
             itemView.setOnClickListener(this);
             context = itemView.getContext();
-
         }
 
         @Override
         public void onClick(View view) {
-
+            Toast.makeText(context, String.valueOf(sensorType), Toast.LENGTH_LONG).show();
         }
     }
 }

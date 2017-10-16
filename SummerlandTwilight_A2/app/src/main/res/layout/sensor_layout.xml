@@ -14,5 +14,4 @@
         android:gravity="left"
         android:textSize="14sp" />
 
-
 </LinearLayout>
