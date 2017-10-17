@@ -51,8 +51,32 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     }
 
     @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
+    protected void onResume()
+    {
+        super.onResume();
+        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
 
+    @Override
+    protected void onPause()
+    {
+        sensorManager.unregisterListener(this);
+
+        super.onPause();
+    }
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+        float[] val = sensorEvent.values;
+        int sensorType = sensorEvent.sensor.getType();
+        switch (sensorType)
+        {
+            case Sensor.TYPE_LIGHT:
+                if(val[0] < 0.5)
+                {
+                    soundGenerator.startTone(ToneGenerator.TONE_CDMA_ABBR_ALERT, 200);
+                }
+                break;
+        }
     }
 
     @Override
