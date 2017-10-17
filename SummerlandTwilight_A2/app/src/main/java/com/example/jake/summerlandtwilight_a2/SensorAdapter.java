@@ -18,12 +18,11 @@ import static com.example.jake.summerlandtwilight_a2.R.layout.sensor_layout;
 
 public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHolder> {
 
-    public ArrayList<Sensor> list;
-//    Context context;
+    public ArrayList<Sensor> list; // a list of the sensors
 
     public SensorAdapter(ArrayList<Sensor> list) {
         this.list = list;
-    }
+    } //initialize the list
 
     @Override
     public int getItemCount() {
@@ -32,6 +31,7 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
 
     @Override
     public SensorAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // create a new MyViewHolder object from the sensor_layout view
         View v = LayoutInflater.from(parent.getContext()).inflate(sensor_layout, parent, false);
         MyViewHolder viewHolder = new MyViewHolder(v);
         return viewHolder;
@@ -39,6 +39,8 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(SensorAdapter.MyViewHolder holder, int position) {
+        //give the MyViewHolder Object the sensor name in the text view and an
+        // int value for it's sensorType
         holder.sensorNameEntry.setText(list.get(position).getName());
         holder.sensorType = list.get(position).getType();
     }
@@ -48,22 +50,22 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
         public TextView sensorNameEntry;
         public int sensorType;
         public LinearLayout myLayout;
-        private SensorManager sensorManager;
         private final String SENSORTYPE = "SENSOR_TYPE";
         Context context;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            // set up member variables
             myLayout = (LinearLayout) itemView;
             sensorNameEntry = (TextView) itemView.findViewById(R.id.sensorNameEntry);
-
             itemView.setOnClickListener(this);
             context = itemView.getContext();
         }
 
         @Override
         public void onClick(View view) {
-            //Toast.makeText(context, String.valueOf(sensorType), Toast.LENGTH_LONG).show();
+            // when we click the sensor create a new intent.
+            // pass the sensor type so we can get the sensor information in the new activity
             Intent intent = new Intent(context, SensorActivity.class);
             intent.putExtra(SENSORTYPE, sensorType);
             context.startActivity(intent);
