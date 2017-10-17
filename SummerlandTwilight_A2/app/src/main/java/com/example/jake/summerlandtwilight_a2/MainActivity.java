@@ -2,23 +2,29 @@ package com.example.jake.summerlandtwilight_a2;
 
 import android.app.Activity;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.hardware.SensorEventListener;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Activity implements AdapterView.OnItemClickListener{
+public class MainActivity extends Activity implements AdapterView.OnItemClickListener, SensorEventListener{
     private RecyclerView recyclerView;
     private SensorManager sensorManager;
     private ArrayList<Sensor> sensorList;
 
     private SensorAdapter sensorAdapter;
+
+    private Sensor lightSensor;
+    private ToneGenerator soundGenerator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         recyclerView = (RecyclerView) findViewById(R.id.recycler);
         sensorAdapter = new SensorAdapter(sensorList);
         recyclerView.setAdapter(sensorAdapter);
+
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        soundGenerator = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
     }
 
     @Override
@@ -41,4 +50,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
     }
 
+    @Override
+    public void onSensorChanged(SensorEvent sensorEvent) {
+
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
 }

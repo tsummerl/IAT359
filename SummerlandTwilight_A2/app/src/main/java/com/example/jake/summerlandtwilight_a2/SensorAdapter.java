@@ -1,6 +1,8 @@
 package com.example.jake.summerlandtwilight_a2;
 
 import android.content.Context;
+import android.content.Intent;
+import android.hardware.SensorManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,7 @@ import static com.example.jake.summerlandtwilight_a2.R.layout.sensor_layout;
 public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHolder> {
 
     public ArrayList<Sensor> list;
-    Context context;
+//    Context context;
 
     public SensorAdapter(ArrayList<Sensor> list) {
         this.list = list;
@@ -46,7 +48,8 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
         public TextView sensorNameEntry;
         public int sensorType;
         public LinearLayout myLayout;
-
+        private SensorManager sensorManager;
+        private final String SENSORTYPE = "SENSOR_TYPE";
         Context context;
 
         public MyViewHolder(View itemView) {
@@ -60,7 +63,10 @@ public class SensorAdapter extends RecyclerView.Adapter<SensorAdapter.MyViewHold
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(context, String.valueOf(sensorType), Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, String.valueOf(sensorType), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, SensorActivity.class);
+            intent.putExtra(SENSORTYPE, sensorType);
+            context.startActivity(intent);
         }
     }
 }
